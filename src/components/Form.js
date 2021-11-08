@@ -23,7 +23,7 @@ class Form extends React.Component {
           Nome:
           <input
             type="text"
-            name="nomeDaCarta"
+            name="cardName"
             id="nomeDaCarta"
             data-testid="name-input"
             value={ cardName }
@@ -34,7 +34,7 @@ class Form extends React.Component {
         <label htmlFor="descrição">
           <input
             type="textarea"
-            name="descrição"
+            name="cardDescription"
             id="descrição"
             data-testid="description-input"
             value={ cardDescription }
@@ -45,7 +45,7 @@ class Form extends React.Component {
           Atributo 01
           <input
             type="number"
-            name="primeiroAtributo"
+            name="cardAttr1"
             id="primeiroAtributo"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -56,7 +56,7 @@ class Form extends React.Component {
           Atributo 02
           <input
             type="number"
-            name="segundoAtributo"
+            name="cardAttr2"
             id="segundoAtributo"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -67,7 +67,7 @@ class Form extends React.Component {
           Atributo 03
           <input
             type="number"
-            name="terceiroAtributo"
+            name="cardAttr3"
             id="terceiroAtributo"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -78,7 +78,7 @@ class Form extends React.Component {
           Imagem
           <input
             type="text"
-            name="urlImagem"
+            name="cardImage"
             id="urlImagem"
             data-testid="image-input"
             value={ cardImage }
@@ -88,7 +88,7 @@ class Form extends React.Component {
         <label htmlFor="raridade">
           Classificação:
           <select
-            name="raridade"
+            name="cardRare"
             id="normal"
             data-testid="rare-input"
             value={ cardRare }
@@ -103,7 +103,7 @@ class Form extends React.Component {
           SuperTrunfo?
           <input
             type="checkbox"
-            name="superTrunfo"
+            name="cardTrunfo"
             id="superTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
