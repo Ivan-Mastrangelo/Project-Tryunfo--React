@@ -8,7 +8,8 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enableDisableBtn = this.enableDisableBtn.bind(this);
-
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -19,16 +20,14 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      deckOfCards: [],
     };
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-    this.setState({ [name]: value }, this.enableDisableBtn);
+    this.setState({ [name]: value }, () => { this.enableDisableBtn(); });
   }
 
   enableDisableBtn() {
@@ -67,6 +66,44 @@ class App extends React.Component {
     }
   }
 
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const createdCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((prevState) => ({
+      deckOfCards: [...prevState.deckOfCards, createdCard],
+    }), () => this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: '',
+    }));
+  }
+
   render() {
     const {
       state: {
@@ -81,12 +118,14 @@ class App extends React.Component {
         isSaveButtonDisabled,
       },
       onInputChange,
+      onSaveButtonClick,
     } = this;
 
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
+          onSaveButtonClick={ onSaveButtonClick }
           onInputChange={ onInputChange }
           cardName={ cardName }
           cardDescription={ cardDescription }
