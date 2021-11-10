@@ -9,7 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.enableDisableBtn = this.enableDisableBtn.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    
+
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -28,42 +28,6 @@ class App extends React.Component {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value }, () => { this.enableDisableBtn(); });
-  }
-
-  enableDisableBtn() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-    } = this.state;
-
-    const attr1 = parseInt(cardAttr1, 10);
-    const attr2 = parseInt(cardAttr2, 10);
-    const attr3 = parseInt(cardAttr3, 10);
-    const sumMax = 210;
-    const indMax = 90;
-
-    if (cardName.length > 0
-      && cardDescription.length > 0
-      && cardImage.length > 0
-      && cardRare.length > 0
-      && attr1 + attr2 + attr3 <= sumMax
-      && attr1 + attr2 + attr3 >= 0
-      && attr1 <= indMax && attr1 >= 0
-      && attr2 <= indMax && attr2 >= 0
-      && attr3 <= indMax && attr3 >= 0) {
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-    } else {
-      this.setState({
-        isSaveButtonDisabled: true,
-      });
-    }
   }
 
   onSaveButtonClick(event) {
@@ -102,6 +66,42 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: '',
     }));
+  }
+
+  enableDisableBtn() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    const attr1 = parseInt(cardAttr1, 10);
+    const attr2 = parseInt(cardAttr2, 10);
+    const attr3 = parseInt(cardAttr3, 10);
+    const sumMax = 210;
+    const indMax = 90;
+
+    if (cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0
+      && cardRare.length > 0
+      && attr1 + attr2 + attr3 <= sumMax
+      && attr1 + attr2 + attr3 >= 0
+      && attr1 <= indMax && attr1 >= 0
+      && attr2 <= indMax && attr2 >= 0
+      && attr3 <= indMax && attr3 >= 0) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
