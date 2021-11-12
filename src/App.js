@@ -9,6 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.enableDisableBtn = this.enableDisableBtn.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    // this.statusTrunfoSwitch = this.statusTrunfoSwitch.bind(this);
 
     this.state = {
       cardName: '',
@@ -21,6 +22,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       deckOfCards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -29,6 +31,12 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value }, () => { this.enableDisableBtn(); });
   }
+
+  // statusTrunfoSwitch() {
+  //   deckOfCards.some((card) => {
+  //     card.checked === card.checked
+  //   })
+  // }
 
   onSaveButtonClick(event) {
     event.preventDefault();
@@ -41,6 +49,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.state;
 
     const createdCard = {
@@ -52,7 +61,12 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     };
+
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
 
     this.setState((prevState) => ({
       deckOfCards: [...prevState.deckOfCards, createdCard],
@@ -64,7 +78,7 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'Normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
     }));
   }
 
@@ -116,6 +130,7 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         isSaveButtonDisabled,
+        hasTrunfo,
       },
       onInputChange,
       onSaveButtonClick,
@@ -136,6 +151,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           onInputChange={ onInputChange }
@@ -147,6 +163,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          // hasTrunfo={ hasTrunfo }
         />
 
       </div>
