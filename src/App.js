@@ -80,6 +80,7 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
     }));
+    // console.log({ deckOfCards }, { createdCard });
   }
 
   enableDisableBtn() {
@@ -131,6 +132,7 @@ class App extends React.Component {
         cardTrunfo,
         isSaveButtonDisabled,
         hasTrunfo,
+        deckOfCards,
       },
       onInputChange,
       onSaveButtonClick,
@@ -163,9 +165,22 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={ hasTrunfo }
         />
-
+        {
+          deckOfCards.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))
+        }
       </div>
     );
   }
