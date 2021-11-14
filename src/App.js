@@ -9,7 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.enableDisableBtn = this.enableDisableBtn.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    // this.statusTrunfoSwitch = this.statusTrunfoSwitch.bind(this);
+    this.removeCard = this.removeCard.bind(this);
 
     this.state = {
       cardName: '',
@@ -32,12 +32,6 @@ class App extends React.Component {
     this.setState({ [name]: value }, () => { this.enableDisableBtn(); });
   }
 
-  // statusTrunfoSwitch() {
-  //   deckOfCards.some((card) => {
-  //     card.checked === card.checked
-  //   })
-  // }
-
   onSaveButtonClick(event) {
     event.preventDefault();
     const {
@@ -50,6 +44,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      // deckOfCards,
     } = this.state;
 
     const createdCard = {
@@ -119,6 +114,19 @@ class App extends React.Component {
     }
   }
 
+  removeCard(oldCard) {
+    const { deckOfCards, cardTrunfo } = this.state;
+    this.setState(() => ({
+      deckOfCards: deckOfCards.filter((item) => item.cardName !== oldCard),
+    }), () => {
+      if (cardTrunfo) {
+        this.setState({ hasTrunfo: true });
+      } else {
+        this.setState({ hasTrunfo: false });
+      }
+    });
+  }
+
   render() {
     const {
       state: {
@@ -136,6 +144,7 @@ class App extends React.Component {
       },
       onInputChange,
       onSaveButtonClick,
+      removeCard,
     } = this;
 
     return (
@@ -168,17 +177,25 @@ class App extends React.Component {
         />
         {
           deckOfCards.map((card) => (
-            <Card
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />
+            <div key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => removeCard(card.cardName) }
+              >
+                Excluir
+              </button>
+            </div>
           ))
         }
       </div>
