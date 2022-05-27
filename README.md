@@ -10,9 +10,9 @@ Este projeto, desenvolvido em React, faz parte das avaliações do curso de dese
 
   * Jogar com o baralho criado.
 
-Com manipulação de estados em classes, essa aplicação simulará um jogo de **Super Trunfo**, desde a criação das cartas do seu baralho até a funcionalidade de jogar.
+Com manipulação de estados em classes, essa aplicação simula um jogo de **Super Trunfo**, desde a criação das cartas do seu baralho até a funcionalidade de jogar.
 
-Na renderização das cartas, a aplicação deverá possuir três filtros de listagem de cartas: filtro por **nome**, por **raridade** e por **Super Trunfo**. Os filtros **nome** e **raridade** são acumulativos. O filtro **Super Trunfo** funciona de forma independente.
+Na renderização das cartas, a aplicação deve possuir três filtros de listagem de cartas: filtro por **nome**, por **raridade** e por **Super Trunfo**. Os filtros **nome** e **raridade** são acumulativos. O filtro **Super Trunfo** funciona de forma independente.
 
 ## Habilidades desenvolvidas
 
