@@ -44,7 +44,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      // deckOfCards,
     } = this.state;
 
     const createdCard = {
@@ -75,7 +74,6 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
     }));
-    // console.log({ deckOfCards }, { createdCard });
   }
 
   enableDisableBtn() {
